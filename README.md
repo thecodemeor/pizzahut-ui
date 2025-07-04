@@ -5,3 +5,9 @@
 
 <p>I created PizzaHut UI as a modern web interface to simulate a real-world pizza ordering experience using Angular. It includes features like an interactive order page, localStorage-based order history, and a clean responsive layout.</p>
 
+<h2 align="center">Author</h2>
+
+<p><a href='meorhakimz.com'>@thecodemeor</a></p>
+
+```bash
+https://www.meorhakimz.com/
