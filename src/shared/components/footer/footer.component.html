@@ -1,0 +1,30 @@
+<footer>
+    <div class="container">
+        <div class="sect">
+            <img src="assets/images/logo/pizzahut/pizzahut-logo.svg" alt="Pizzahut Logo">
+        </div>
+        <div class="line"></div>
+        <div class="sect"></div>
+        <div class="line"></div>
+        <div class="sect">
+            <div class="socmed">
+                @for ( item of ["facebook", "instagram"]; track item ) {
+                    <button (click)="urlLink(item, 'socmed')">
+                        <img [src]="'assets/images/icon/socmed/' + item + '.svg'" [alt]="item +' Icon'">
+                    </button>
+                }
+                <button>
+                    <p>{{ 'feedback' | translate | titlecase }}</p>
+                </button>
+            </div>
+            <div class="contactus">
+                {{ 'contactus' | translate | titlecase }}:
+                <img src="assets/images/icon/socmed/phone.svg" class="mobileicon" alt="Mobile Icon">
+                <span>03 1 300 88 2525</span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2025 <span>{{ title | titlecase }}</span>. All rights reserved.
+    </div>
+</footer>

@@ -1,0 +1,48 @@
+@use '@angular/material' as mat;
+
+$spacing-1: 0.625rem;
+$spacing-2: 1.25rem;
+$corner: 3rem;
+
+:host {
+    display: flex;
+    padding: $spacing-2;
+    background: var( --general );
+    flex-direction: column;
+    align-items: center;
+    button {
+        width: 100%; height: 3rem;
+        font-size: 0.875rem;
+        line-height: 0.875rem;
+        border: solid 2px black;
+        border-radius: 1.5rem;
+        justify-content: center;
+        align-items: center;
+    }
+}
+img {
+    width: 50%; height: auto;
+    margin: $spacing-2 0;
+    animation: riding 2s infinite linear;
+    @keyframes riding {
+        0% { transform: translateY( 0px );}
+        5% { transform: translateY( -4px );}
+        10% { transform: translateY( 0px );}
+        15% { transform: translateY( 0px );}
+        20% { transform: translateY( -7px );}
+        25% { transform: translateY( 0px );}
+        28% { transform: translateY( -3px );}
+        30% { transform: translateY( 0px );}
+        100% { transform: translateY( 0px );}
+    }
+}
+h2 { font-family: 'Pizzaria', sans-serif;}
+mat-dialog-actions {
+    width: 100%;
+    padding: $spacing-2 0 0;
+    button {
+        width: 5rem;
+        color: white;
+        background: #930725;
+    }
+}

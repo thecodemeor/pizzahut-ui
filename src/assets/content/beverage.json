@@ -1,0 +1,34 @@
+[
+    {
+        "id": "1",
+        "name": "watermelon",
+        "status": [ "hit" ],
+        "ingredients": [],
+        "price": 6.50,
+        "type": "beverage"
+    },
+    {
+        "id": "2",
+        "name": "orange",
+        "status": [],
+        "ingredients": [],
+        "price": 6.50,
+        "type": "beverage"
+    },
+    {
+        "id": "3",
+        "name": "tea",
+        "status": [ "new" ],
+        "ingredients": [],
+        "price": 3.50,
+        "type": "beverage"
+    },
+    {
+        "id": "4",
+        "name": "water",
+        "status": [],
+        "ingredients": [],
+        "price": 1.00,
+        "type": "beverage"
+    }
+]

@@ -1,0 +1,61 @@
+<main [ngClass]="responsive ? 'mobile' : ''">
+    <div class="batch-order" [ngClass]="responsive ? 'mobile' : ''">
+        <mat-card *ngFor="let batch of batchOrdered; index as i" (click)="checkOut( batch.batch )" appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>
+                    Order {{ i + 1 }}
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="date">
+                    {{ batch.time | date: 'dd-MM-yyyy' }}<br>
+                    {{ batch.time | date: 'hh:mm aa' }}
+                </div>
+                <div class="item">Item: {{ batch.batch.length }}</div>
+                <div class="billing">{{ totalPriceOrdered( batch.batch ) }}</div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="dialogSide" [ngClass]="responsive ? 'mobile' : ''" [style.transform]="drawerOpen ? 'translateX( 0 )' : 'translateX( 20rem )'">
+        <mat-card appearance="outlined">
+            <mat-card-header>
+                <mat-card-title>{{ 'myorder' | translate | titlecase }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div *ngFor="let cart of inCart; let last = last" class="incart">
+                    <img [src]="'assets/images/menu/' + cart.type + '/' + cart.name + '.svg'" alt="">
+                    <div class="detail">
+                        <label>{{ menuLabel( cart.name ) | translate | titlecase }}</label>
+                        <div class="billing">{{ billingConverter( cart.price, cart.count ) }}</div>
+                    </div>
+                    <div class="count">
+                        <div class="key">{{ cart.count  }}</div>
+                    </div>
+                    <div #lastItem *ngIf="last"></div>
+                </div>
+            </mat-card-content>
+            <mat-card-footer>
+                <div class="action">
+                    <button class="clear" (click)="inCart = []"><p>{{ 'clear' | translate | titlecase }}</p></button>
+                </div>
+                <mat-card class="billing" appearance="outlined">
+                    <div class="billing-total">
+                        <p>{{ 'subtotal' | translate | titlecase }}</p>
+                        <p>{{ totalAmount() }}</p>
+                    </div>
+                    <div class="billing-total">
+                        <p>{{ 'servicecharge' | translate | titlecase }}</p>
+                        <p>{{ sst }} %</p>
+                    </div>
+                    <div class="billing-total final">
+                        <h3>{{ 'finaltotal' | translate | titlecase }}</h3>
+                        <h3>{{ finalAmount() }}</h3>
+                    </div>
+                </mat-card>
+                <button (click)="submit()" [disabled]="!inCart.length">
+                    <h5>{{ 'pay' | translate | titlecase }}</h5>
+                </button>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</main>

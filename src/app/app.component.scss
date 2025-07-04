@@ -1,0 +1,113 @@
+@use '@angular/material' as mat;
+
+$spacing-1: 0.625rem;
+$spacing-2: 1.25rem;
+
+mat-drawer-container {
+    width: 100%; height: 100%;
+    mat-drawer {
+        @include mat.sidenav-overrides((
+            container-width: 8.5rem,
+        ));
+        @include mat.elevation(3);
+        background: var(--general);
+        .container {
+            display: flex;
+            width: 100%; height: 100%;
+            padding: $spacing-2;
+            flex-direction: column;
+            img.logo {
+                width: 100%; height: auto;
+            }
+            .navbar {
+                display: flex;
+                width: 100%; height: fit-content;
+                flex-direction: column;
+                gap: $spacing-1;
+                button.list {
+                    display: flex;
+                    padding: $spacing-1;
+                    border: none;
+                    border-radius: $spacing-2;
+                    background: var(--general);
+                    flex-direction: column;
+                    align-items: center;
+                    filter: grayscale(100%);
+                    transition: all 0.3s;
+                    cursor: pointer;
+                    img {
+                        width: 60%; height: auto;
+                        margin-bottom: $spacing-1;
+                    }
+                    p {
+                        font-size: 0.8rem;
+                        text-transform: capitalize;
+                    }
+                    &.active, &:hover { filter: grayscale(0%);}
+                    &:hover {
+                        background: rgba(150, 150, 150, 0.2);
+                        img { animation: vibrate 1s ease infinite;}
+                        @keyframes vibrate {
+                            0% { rotate: 0deg;}
+                            10% { rotate: 15deg;}
+                            20% { rotate: -15deg;}
+                            30% { rotate: 10deg;}
+                            40% { rotate: -10deg;}
+                            50% { rotate: 0deg;}
+                            100% { rotate: 0deg;}
+
+                        }
+                    }
+                }
+            }
+            .settings {
+                display: flex;
+                flex-direction: column;
+                gap: $spacing-1;
+                button {
+                    display: flex;
+                    width: 100%; height: 2rem;
+                    border-radius: 1rem;
+                    justify-content: center;
+                    align-items: center;
+                    mat-icon {
+                        $sizing-icon: 1.25rem;
+                        width: $sizing-icon; height: $sizing-icon;
+                        font-size: $sizing-icon;
+                    }
+                }
+                img {
+                    width: 30%;
+                    transition: all 0.3s;
+                    cursor: pointer;
+                    &:hover { transform: translateY(-5px);}
+                    &:active { transform: translateY(-1px);}
+                }
+            }
+        }
+    }
+    mat-drawer-content {
+        mat-toolbar {
+            position: sticky;
+            top: 0;
+            justify-content: space-between;
+            background: var(--general);
+            transition: all 0.2s;
+            z-index: 300;
+            &.scrolled { box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;}
+            button, .void {
+                width: 40px; height: 40px;
+                overflow: hidden;
+            }
+            img.logo {
+                width: auto; height: 70%;
+            }
+        }
+        app-loading {
+            position: sticky;
+            top: 0; bottom: 0; left: 0;
+            width: 100%; height: 100dvh;
+            z-index: 1500;
+        }
+    }
+}

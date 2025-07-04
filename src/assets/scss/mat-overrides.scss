@@ -1,0 +1,143 @@
+/* ================================================ */
+    // Custom Theming for Angular Material
+/* ================================================ */
+@use '@angular/material' as mat;
+html {
+// Material Badge ----------------------------------------------------------- //
+// Material Bottom Sheet ---------------------------------------------------- //
+// Material Button ---------------------------------------------------------- //
+// Material Button Toggle --------------------------------------------------- //
+// Material Card ------------------------------------------------------------ //
+// Material Checkbox --------------------------------------------------------- //
+// Material Chips ------------------------------------------------------------ //
+// Material Date Picker ------------------------------------------------------ //
+// Material Dialog ----------------------------------------------------------- //
+@include mat.dialog-overrides((
+    container-color: var(--general),
+));
+.mat-mdc-dialog-surface { border: solid 2px var( --text-color ); border-radius: 2rem;}
+
+// Material Divider ---------------------------------------------------------- //
+// Material Expansion -------------------------------------------------------- //
+// Material Form Field ------------------------------------------------------- //
+// Material Grid ------------------------------------------------------------- //
+// Material Icon ------------------------------------------------------------- //
+// Material List ------------------------------------------------------------- //
+// Material Menu ------------------------------------------------------------- //
+--size-10: 1.75rem;
+--spacing-menu: 0.625rem;
+@include mat.menu-overrides((
+    container-shape: var(--size-10),
+    container-elevation-shadow: 12,
+));
+.mat-mdc-menu-panel {
+    @include mat.elevation(10);
+    width: fit-content; max-width: none;
+    margin-top: var(--spacing-menu);
+    border: solid 2px var( --text-color );
+    background-color: transparent;
+    @media (max-width: 991px) { width: 90%;}
+}
+.mat-mdc-menu-content {
+    padding: var(--spacing-menu);
+    background-color: var(--surface);
+    mat-card {
+        @include mat.card-overrides((
+            outlined-container-shape: calc(var(--size-10) - var(--spacing-menu)),
+            outlined-outline-width: 0,
+        ));
+        color: var(--text-color);
+        background-color: transparent;
+        overflow: auto;
+        &.layout {
+            width: 17.5rem;
+            mat-card-header, mat-card-content, mat-card-footer { background: var(--background);}
+            mat-card-header {
+                display: flex;
+                margin-bottom: 0.3125rem;
+                padding: var(--spacing-menu);
+                font-family: 'Pizzaria', sans-serif;
+                border-radius: 0 0 5px 5px;
+                justify-content: center;
+                mat-card-title {
+                    font-size: 2rem;
+                    color: var(--mat-sys-on-primary);
+                    text-transform: capitalize
+                }
+            }
+            mat-card-content {
+                padding: var(--spacing-menu);
+                border-radius: 5px;
+                button {
+                    display: flex;
+                    width: 100%;
+                    &:hover { background: var(--button-background-hover);}
+                }
+            }
+            mat-card-footer {
+                --text-size-1: 0.8rem;
+                --text-size-2: 0.625rem;
+                margin-top: 0.3125rem;
+                padding: var(--spacing-menu);
+                border-radius: 5px 5px 0 0;
+                p { opacity: 0.5;}
+                p:nth-child(1) { font-size: var(--text-size-1);}
+                p:nth-child(2) { font-size: var(--text-size-2); line-height: var(--text-size-2);}
+            }
+            @media (max-width: 991px) {
+                width: 100%;
+            }
+        }
+        &.info {
+            width: 30rem;
+            margin: 0;
+            mat-card-content {
+                display: flex;
+                height: fit-content;
+                padding: var(--spacing-menu);
+                border-radius: 5px;
+                background: var(--background);
+                align-items: center;
+                .info-image {
+                    width: auto; height: 5rem;
+                }
+                .info-description {
+                    width: 25rem;
+                    margin-left: 1.25rem;
+                }
+            }
+            @media (max-width: 991px) {
+                width: 100%;
+                mat-card-content {
+                    flex-direction: column;
+                    align-items: center;
+                    .info-description {
+                        width: 100%;
+                        margin: 0;
+                        padding: 1.25rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Material Checkbox --------------------------------------------------------- //
+// Material Paginator -------------------------------------------------------- //
+// Material Progress Bar ----------------------------------------------------- //
+// Material Progress Spinner ------------------------------------------------- //
+// Material Radio ------------------------------------------------------------ //
+// Material Ripple ----------------------------------------------------------- //
+// Material Select ----------------------------------------------------------- //
+// Material Sidenav ---------------------------------------------------------- //
+// Material Slide Toggle ----------------------------------------------------- //
+// Material Slider ----------------------------------------------------------- //
+// Material Snack Bar -------------------------------------------------------- //
+// Material Sort ------------------------------------------------------------- //
+// Material Stepper ---------------------------------------------------------- //
+// Material Table ------------------------------------------------------------ //
+// Material Tabs ------------------------------------------------------------- //
+// Material Toolbar ---------------------------------------------------------- //
+// Material Tooltip ---------------------------------------------------------- //
+// Material Tree ------------------------------------------------------------- //
+}

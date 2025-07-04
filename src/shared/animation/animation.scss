@@ -1,0 +1,34 @@
+/**======================================================================
+Template Name:  Animation Styles
+Author:         thecodemeor
+====================================================================== */
+
+.fadeIn {
+    opacity: 0;
+    animation: fadein 2s forwards ease;
+    @keyframes fadein {
+        to { opacity: 1;}
+    }
+}
+
+.rotary-left {
+    animation: rotaryL 20s linear infinite;
+    @keyframes rotaryL {
+        0% { rotate: 0deg;}
+        25% { rotate: 90deg;}
+        50% { rotate: 180deg;}
+        75% { rotate: 270deg;}
+        100% { rotate: 360deg;}
+    }
+}
+
+.rotary-right {
+    animation: rotaryR 20s linear infinite;
+    @keyframes rotaryR {
+        0% { rotate: 360deg;}
+        25% { rotate: 270deg;}
+        50% { rotate: 180deg;}
+        75% { rotate: 90deg;}
+        100% { rotate: 0deg;}
+    }
+}

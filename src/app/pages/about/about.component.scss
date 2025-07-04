@@ -1,0 +1,50 @@
+$spacing-1: 0.625rem;
+$spacing-2: 1.25rem;
+$corner: 3rem;
+
+main {
+    display: flex;
+    width: 100%; height: 100dvh;
+    padding: $spacing-2;
+    .details {
+        flex: 1 1 0;
+        display: flex;
+        padding: $spacing-2 0 0;
+        flex-direction: column;
+        align-items: center;
+        h1 {
+            margin: 0 0 $spacing-2;
+            font-size: clamp(2rem, 5vw, 5rem);
+        }
+        h5 {
+            width: 80%;
+            text-align: justify;
+            @media ( max-width: 599.98px ) and ( orientation: portrait ) {
+                width: 90%;
+            }
+        }
+    }
+    .graphic {
+        flex: 1 1 0;
+        display: flex;
+        border-radius: $corner;
+        justify-content: center;
+        align-items: flex-start;
+
+        outline: solid 0.3rem black;
+        background-image: url('src/assets/images/stock/pizza-lift.jpg');
+        background-position: center top;
+        background-size: cover;
+        img {
+            width: 20%; height: auto;
+            transform: translate(-100%, 50%);
+        }
+        @media ( max-width: 599.98px ) and ( orientation: portrait ) {
+            background-position: center;
+            img { display: none;}
+        }
+    }
+    @media ( max-width: 599.98px ) and ( orientation: portrait ) {
+        flex-direction: column-reverse;
+    }
+}

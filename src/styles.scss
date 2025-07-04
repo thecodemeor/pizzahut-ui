@@ -1,1 +1,144 @@
-/* You can add global styles to this file, and also import other style files */
+/**======================================================================
+=========================================================================
+Template Name:  Pizzahut Uiproposal Styles
+Author:         thecodemeor
+File:           style.scss
+Description:    Code-space for all files .
+=========================================================================
+====================================================================== */
+/*********************************************
+    * Material Design
+*********************************************/
+@use '@angular/material' as mat;
+
+/*********************************************
+    * Import
+*********************************************/
+// Custom Styles Import
+// @use 'src/assets/scss/mat-overrides.scss';
+
+// @import 'src/theme.css';
+@use 'src/shared/animation/animation.scss';
+@use 'src/assets/scss/fonts.scss';
+@use 'src/assets/scss/mat-overrides.scss';
+
+/*********************************************
+* Global Styles
+*********************************************/
+html {
+    /* Costum Themer */
+    --general: light-dark(white, black);
+    --background: light-dark(#faf9fd, #1e212a);
+    --surface: light-dark(#eeeeee, #26272d);
+    --surface-dark: light-dark(#999999, #555d77);
+    --text-color: light-dark(black, white);
+    --primary: #05a8f4;
+    --primary-light: light-dark(#e1f5fe, white);
+    --primary-dark: light-dark(#00689c, #75e3ff);
+    --button-background-hover: light-dark(#e2e2e2, white);
+    --line-color: light-dark(#bbbbbb, #555d77);
+    --grey: light-dark(#3e4851, #bec8d2);
+}
+html, body { height: 100%; }
+html, body {
+    margin: 0;
+    // font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'Bobogo', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--text-color-dynamic) !important;
+
+    scroll-behavior: smooth;
+    scrollbar-width: none !important;
+}
+* { box-sizing: border-box;}
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: auto;
+}
+
+button {
+    position: relative;
+    display: flex;
+    border: none;
+    overflow: hidden;
+    transition: all 0.3s;
+    &:hover {
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        &:active { scale: 0.95;}
+    }
+    &:disabled {
+        background: #7c7c7c !important;
+        cursor: not-allowed;
+        &::after {
+            content: none;
+        }
+        &:active { scale: 1;}
+    }
+}
+
+// Font Header ------------------------------------------------- //
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    font-family: 'Bobogo', sans-serif;
+    font-weight: bold;
+    line-height: 1.2;
+}
+h1 { font-size: 2rem;}
+h2 { font-size: 1.75rem;}
+h3 { font-size: 1.5rem;}
+h4 { font-size: 1.45rem;}
+h5 { font-size: 1.25rem;}
+h6 {
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+}
+p, a {
+    font-size: 0.875rem;
+    font-weight: normal;
+    line-height: 1.3;
+}
+.billing { font-family: 'Sixties', sans-serif;}
+@media (max-width: 991px) {
+    h1 { font-size: 1.75rem;}
+    h2 { font-size: 1.5rem;}
+    h3 { font-size: 1.35rem;}
+    h4 { font-size: 1.25rem;}
+    h5 { font-size: 1rem;}
+    h6, th { font-size: 0.875rem;}
+    p, td { font-size: 0.75rem;}
+}
+
+// Sizing ------------------------------------------------------ //
+.w-100 { width: 100% !important;}
+.h-100 { height: 100% !important;}
+.spacer { flex: 1 1 auto;}
+
+.d-flex { display: flex !important;}
+.flex-col { flex-direction: column !important;}
+
+// Functionality ----------------------------------------------- //
+.scrollable {
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.skeleton {
+    font-family: 'Flow Circular', system-ui;
+    filter: grayscale(100%);
+    opacity: 0.3;
+}
+.pagination {
+    width: 100%;
+    height: 10dvh;
+}
+.oneline { white-space: nowrap;}
+.primary { color: var(--primary);}

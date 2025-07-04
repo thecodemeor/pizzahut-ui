@@ -1,0 +1,173 @@
+@use '@angular/material' as mat;
+
+$spacing-1: 0.625rem;
+$spacing-2: 1.25rem;
+$corner: 3rem;
+
+:host {
+    position: relative;
+    display: block;
+    width: 100%; height: auto;
+    background-image: url('src/assets/images/backgrouund/ingredients.png');
+    background-repeat: repeat;
+    background-size: 60vw;
+    button {
+        width: 100%; height: 3rem;
+        font-size: 0.875rem;
+        line-height: 0.875rem;
+        border: solid 2px black;
+        border-radius: 1.5rem;
+        justify-content: center;
+        align-items: center;
+    }
+}
+main {
+    position: relative;
+    display: flex;
+    width: 100%; height: auto;
+    min-height: 100dvh;
+    &.mobile { flex-direction: column;}
+    .batch-order {
+        display: flex;
+        width: 60%;height: 100%;
+        padding: $spacing-2;
+        flex-direction: column;
+        gap: $spacing-2;
+        &.mobile { width: 100%;}
+        mat-card {
+            @include mat.card-overrides((
+                outlined-outline-width: 2px,
+                outlined-container-shape: 2rem,
+                outlined-container-color: var( --general ),
+                title-text-font: 'Pizzaria',
+                title-text-size: 2rem
+            ));
+            overflow: hidden;
+            cursor: pointer;
+            mat-card-header {
+                padding-bottom: 1rem;
+                color: white;
+                background: #930725;
+            }
+            mat-card-content {
+                display: flex;
+                padding-top: 1rem;
+                align-items: center;
+                gap: $spacing-1;
+                .date, .item { flex: 1 1 0;}
+                .date { font-family: 'Pizzaria', sans-serif;}
+                .item { text-align: right;}
+                .billing {
+                    flex: 2 1 0;
+                    height: fit-content;
+                    font-size: 2rem;
+                    text-align: right;
+                }
+            }
+        }
+    }
+}
+
+// Payment section ============================================= //
+.dialogSide {
+    position: sticky;
+    top: 0; bottom: 0; right: 0;
+    width: 40%; height: 100dvh;
+    padding: $spacing-1;
+    transform: translateX( 20rem );
+    transition: all 0.5s ease-in-out;
+    z-index: 500;
+    &.mobile {
+        position: unset;
+        width: 100%;
+    }
+    mat-card {
+        @include mat.card-overrides((
+            outlined-outline-width: 2px,
+            outlined-container-shape: 2rem,
+            outlined-container-color: var( --general ),
+            title-text-font: 'Pizzaria',
+            title-text-size: 3rem
+        ));
+        width: 100%; height: 100%;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        mat-card-header {
+            justify-content: center;
+        }
+        mat-card-content {
+            flex: 1 1 0;
+            margin: $spacing-2 0 0;
+            overflow-y: auto;
+            .incart {
+                $incart-height: 5rem;
+                display: flex;
+                width: 100%; height: $incart-height;
+                padding: $spacing-1 0;
+                img {
+                    width: calc( $incart-height - 2*( $spacing-1 ));
+                    height: calc( $incart-height - 2*( $spacing-1 ));
+                }
+                .detail {
+                    flex: 1 1 0;
+                    display: flex;
+                    padding: $spacing-1;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+                .count {
+                    display: flex;
+                    width: 5rem; height: 100%;
+                    background: var(--general);
+                    .key {
+                        display: flex;
+                        width: 100%; height: 100%;
+                        color: var( --text-color );
+                        border-radius: 0;
+                        justify-content: center;
+                        align-items: center;
+                        &:nth-child(1) {
+                            grid-row: 1 / span 2;
+                        }
+                    }
+                }
+            }
+        }
+        mat-card-footer {
+            display: flex;
+            padding: $spacing-1;
+            flex-direction: column;
+            gap: $spacing-1;
+            mat-card.billing {
+                @include mat.card-overrides((
+                    outlined-container-shape: 1.5rem
+                ));
+                display: flex;
+                width: 100%; height: fit-content;
+                padding: $spacing-1;
+                flex-direction: column;
+                box-shadow: none;
+                gap: 0.2rem;
+                .billing-total {
+                    display: flex;
+                    justify-content: space-between;
+                    &.final h3 { font-family: 'Sixties', sans-serif;}
+                }
+            }
+            button {
+                color: white;
+                background: #930725;
+                h5 {
+                    font-family: 'Sixties', sans-serif;
+                }
+                &.clear {
+                    width: fit-content; height: 1.5rem;
+                    margin-left: auto;
+                    padding: 0 $spacing-2;
+                    border: none;
+                    background: none;
+                    p { color: var( --text-color );}
+                }
+            }
+        }
+    }
+}

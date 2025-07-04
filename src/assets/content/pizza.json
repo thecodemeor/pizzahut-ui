@@ -1,0 +1,231 @@
+[
+    {
+        "id": "1",
+        "name": "big-bang",
+        "status": [ "hit" ],
+        "ingredients": [
+            "cheese",
+            "beef",
+            "chicken",
+            "salmon",
+            "shrimp",
+            "capsicum",
+            "tomato",
+            "pineapple",
+            "mushroom",
+            "chilli",
+            "olive",
+            "onion",
+            "marshmallow",
+            "cherry tomato",
+            "basil leaf",
+            "rosemary leaf",
+            "egg"
+        ],
+        "price": 120.50,
+        "type": "pizza"
+    },
+    {
+        "id": "2",
+        "name": "super-supreme",
+        "status": [ "new", "hit" ],
+        "ingredients": [
+            "cheese",
+            "beef",
+            "mushroom",
+            "olive",
+            "marshmallow",
+            "cherry tomato",
+            "basil leaf",
+            "rosemary leaf"
+        ],
+        "price": 45.50,
+        "type": "pizza"
+    },
+    {
+        "id": "3",
+        "name": "hawaiian-chicken",
+        "status": [],
+        "ingredients": [
+            "cheese",
+            "chicken",
+            "pineapple"
+        ],
+        "price": 15.00,
+        "type": "pizza"
+    },
+    {
+        "id": "4",
+        "name": "what-the-forest",
+        "status": [],
+        "ingredients": [
+            "cheese",
+            "olive",
+            "basil leaf",
+            "rosemary leaf"
+        ],
+        "price": 12.50,
+        "type": "pizza"
+    },
+    {
+        "id": "5",
+        "name": "death-dessert",
+        "status": [],
+        "ingredients": [
+            "cheese"
+        ],
+        "price": 10.00,
+        "type": "pizza"
+    },
+    {
+        "id": "6",
+        "name": "medi-sea",
+        "status": [ "new", "hit" ],
+        "ingredients": [
+            "salmon",
+            "shrimp",
+            "olive",
+            "cherry tomato",
+            "rosemary leaf",
+            "egg"
+        ],
+        "price": 80.50,
+        "type": "pizza"
+    },
+    {
+        "id": "7",
+        "name": "vitamin-sea",
+        "status": [],
+        "ingredients": [
+            "salmon",
+            "olive",
+            "marshmallow",
+            "cherry tomato",
+            "basil leaf",
+            "rosemary leaf"
+        ],
+        "price": 65.50,
+        "type": "pizza"
+    },
+    {
+        "id": "8",
+        "name": "tepi-pata",
+        "status": [ "hit" ],
+        "ingredients": [
+            "shrimp",
+            "capsicum",
+            "chilli",
+            "olive",
+            "onion",
+            "rosemary leaf"
+        ],
+        "price": 35.50,
+        "type": "pizza"
+    },
+    {
+        "id": "9",
+        "name": "kebun-atok",
+        "status": [],
+        "ingredients": [
+            "capsicum",
+            "tomato",
+            "pineapple",
+            "mushroom",
+            "chilli",
+            "olive",
+            "onion",
+            "marshmallow",
+            "cherry tomato",
+            "basil leaf",
+            "rosemary leaf"
+        ],
+        "price": 22.50,
+        "type": "pizza"
+    },
+    {
+        "id": "10",
+        "name": "volcano",
+        "status": [],
+        "ingredients": [
+            "beef",
+            "pineapple",
+            "mushroom",
+            "basil leaf",
+            "egg"
+        ],
+        "price": 45.00,
+        "type": "pizza"
+    },
+    {
+        "id": "11",
+        "name": "chicken-pox",
+        "status": [],
+        "ingredients": [
+            "cheese",
+            "beef"
+        ],
+        "price": 24.50,
+        "type": "pizza"
+    },
+    {
+        "id": "12",
+        "name": "treasure-hunt",
+        "status": [],
+        "ingredients": [
+            "cheese",
+            "beef",
+            "tomato",
+            "mushroom",
+            "chilli",
+            "olive",
+            "onion",
+            "basil leaf",
+            "rosemary leaf",
+            "egg"
+        ],
+        "price": 32.00,
+        "type": "pizza"
+    },
+    {
+        "id": "13",
+        "name": "weird-pie",
+        "status": [],
+        "ingredients": [
+            "cheese",
+            "shrimp",
+            "capsicum",
+            "tomato",
+            "mushroom",
+            "chilli",
+            "olive",
+            "onion"
+        ],
+        "price": 25.50,
+        "type": "pizza"
+    },
+    {
+        "id": "14",
+        "name": "eye-land",
+        "status": [],
+        "ingredients": [
+            "cheese",
+            "egg"
+        ],
+        "price": 13.00,
+        "type": "pizza"
+    },
+    {
+        "id": "15",
+        "name": "bonetarian",
+        "status": [],
+        "ingredients": [
+            "cheese",
+            "beef",
+            "chicken",
+            "salmon",
+            "shrimp"
+        ],
+        "price": 55.50,
+        "type": "pizza"
+    }
+]

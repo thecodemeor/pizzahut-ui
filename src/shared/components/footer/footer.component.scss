@@ -1,0 +1,107 @@
+$spacing-1: 0.625rem;
+$spacing-2: 1.25rem;
+$corner: 3rem;
+footer {
+    width: 100%;
+    padding: $spacing-2 $spacing-2 0;
+    color: white;
+    background: #930725;
+    overflow: hidden;
+    .container {
+        display: flex;
+        width: 100%; height: 30dvh;
+        padding: $spacing-2 0;
+        border-top: solid 2px white;
+        border-bottom: solid 2px white;
+        .sect {
+            flex: 1 1 0;
+            padding: 0 $spacing-2;
+            &:nth-child(1) {
+                position: relative;
+                img {
+                    width: auto; height: 7rem;
+                    filter:
+                        drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white)
+                        drop-shadow(1px -1px 0 white) drop-shadow(-1px 1px 0 white)
+                        drop-shadow(1px 0 0 white) drop-shadow(-1px 0 0 white)
+                        drop-shadow(0 -1px 0 white) drop-shadow(0 1px 0 white)
+                        ;
+                }
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: -60%; right: -5%;
+                    width: 15rem; height: 15rem;
+                    background-image: url('src/assets/images/stock/pizza-pan.png');
+                    background-size: cover;
+                    background-position: center;
+                }
+                @media ( max-width: 599.98px ) and ( orientation: portrait ) {
+                    &::before {
+                        top: -100%; bottom: unset; right: -40%;
+                        rotate: 180deg;
+                    }
+                }
+            }
+            &:nth-child(3) { display: flex; padding: $spacing-2;}
+            &:nth-child(5) {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-start;
+                gap: $spacing-2;
+                .socmed {
+                    $sizing-height: 3rem;
+                    display: flex;
+                    width: 100%;
+                    gap: $spacing-1;
+                    button {
+                        display: flex;
+                        width: $sizing-height; height: $sizing-height;
+                        padding: 0.8rem;
+                        border-radius: calc( $sizing-height/2 );
+                        border: solid 2px rgb(0, 0, 0);
+                        justify-content: center;
+                        align-items: center;
+                        &:nth-last-child(1) {
+                            flex: 1 1 0;
+                        }
+                    }
+                }
+                .contactus {
+                    $sizing-height: 1rem;
+                    display: flex;
+                    font-size: $sizing-height;
+                    line-height: $sizing-height;
+                    img.mobileicon {
+                        display: inline;
+                        width: auto; height: $sizing-height;
+                        margin: 0 0.5rem ;
+                        fill: white;
+                    }
+                }
+            }
+        }
+        .line {
+            width: 2px; height: 100%; background: white;
+            @media ( max-width: 599.98px ) and ( orientation: portrait ) {
+                display: none;
+            }
+        }
+        @media ( max-width: 599.98px ) and ( orientation: portrait ) {
+            height: fit-content;
+            flex-direction: column;
+        }
+    }
+    .copyright {
+        width: 100%;
+        padding: 0.5rem 0;
+
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+        font-size: 0.5rem;
+        line-height: 0.5rem;
+        // color: $text-color;
+        color: white;
+        text-align: right;
+    }
+}

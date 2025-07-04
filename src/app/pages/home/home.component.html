@@ -1,0 +1,145 @@
+<div class="hero">
+    <swiper-container
+        *ngIf="slideUpdate.length"
+        slides-per-view="1"
+        navigation="true"
+        pagination="true"
+        loop="true"
+        class="my-swiper"
+    >
+        <swiper-slide *ngFor="let slide of slideUpdate" [class]="responsive ? 'mobile' : ''">
+            <img [src]="'assets/images/menu/pizza/' + slide.name + '.svg'" class="pizza" [class]="responsive ? 'mobile' : ''" [alt]="slide.name">
+            <div class="title" [innerHTML]="gravitti( slide.name )" [class]="responsive ? 'mobile' : ''"></div>
+            <div class="status" [class]="responsive ? 'mobile' : ''">
+                <img src="assets/images/stock/tag-stamp.svg" class="stamp rotary-left" alt="Stamp">
+                <img src="assets/images/stock/tag-stamp-outline.svg" class="stamp rotary-right" style="scale: 0.95;" alt="Stamp">
+                <div class="label">NEW<br>PIZZA</div>
+            </div>
+            <div class="billing" [class]="responsive ? 'mobile' : ''">{{ billingConverter( slide.price ) }}</div>
+        </swiper-slide>
+    </swiper-container>
+</div>
+<div class="menu pizza">
+    <div class="header">
+        <img src="assets/images/backgrouund/category-pizza.svg" [ngClass]="responsive ? 'mobile' : ''" alt="Category Pizza">
+        <div class="title">PIZZA</div>
+    </div>
+    <div class="filter" [ngClass]="responsive ? 'mobile' : ''">
+        @for ( filter of filters; track filter ) {
+            <div class="item" [ngClass]="responsive ? 'mobile' : ''" (mouseenter)="filterHovered = filter" (mouseleave)="filterHovered = ''" (click)="getPizza( filter )">
+                <img *ngIf="filter !== filterActive" [src]="'assets/images/icon/filter/' + getFilterData('image', filter) + getFilterData('image', filter, 'hover') + '.svg'" [style.filter]="app.logoShift() === '-white' ? 'invert(100)' : ''" [alt]="filter">
+                <img *ngIf="filter === filterActive" [src]="'assets/images/icon/filter/' + getFilterData('image', filter) + '.svg'" [alt]="filter">
+                <label>{{ getFilterData('label', filter) | translate | titlecase }}</label>
+            </div>
+        }
+    </div>
+    <div class="listmenu" [ngClass]="gridMenuArrangement()">
+        @for ( pizza of pizzaMenu; track pizza ) {
+            <div class="item">
+                <div class="details" [ngClass]="responsive ? 'mobile' : ''">
+                    <h2 class="title">{{ menuLabel( pizza.name ) | titlecase }}</h2>
+                    <p>{{ pizza.ingredients.join(', ') | titlecase }}</p>
+                    <span class="spacer"></span>
+                    <div class="billing">
+                        {{ billingConverter( pizza.price ) }}
+                    </div>
+                    <button *ngIf="!putremoveCart( pizza, 'pizza' )" class="submit" (click)="addtoCart( pizza, 'pizza' )">
+                        <p>{{ 'order' | translate | titlecase }}
+                            <mat-icon>chevron_right</mat-icon>
+                        </p>
+                    </button>
+                    <button *ngIf="putremoveCart( pizza, 'pizza' )" class="submit remove" (click)="removefromCart( pizza, 'pizza' )">
+                        <p>{{ 'remove' | translate | titlecase }}
+                            <mat-icon>close</mat-icon>
+                        </p>
+                    </button>
+                </div>
+                <img [src]="'assets/images/menu/pizza/' + pizza.name + '.svg'" [alt]="pizza.name">
+                <img *ngIf="menuStatus( pizza ) !== ''" [src]="'assets/images/icon/filter/' + menuStatus( pizza ) + '.svg'" class="status" [alt]="pizza.status">
+            </div>
+        }
+    </div>
+</div>
+<div class="menu beverage">
+    <div class="header">
+        <img src="assets/images/backgrouund/category-pizza.svg" [ngClass]="responsive ? 'mobile' : ''" alt="Category Pizza">
+        <div class="title">{{ 'beverage' | translate | titlecase }}</div>
+    </div>
+    <div class="listmenu" [ngClass]="gridMenuArrangement()">
+        @for ( drink of beverageMenu; track drink ) {
+            <div class="item">
+                <div class="details" [ngClass]="responsive ? 'mobile' : ''">
+                    <h2 class="title">{{ menuLabel( drink.name ) | translate | titlecase }}</h2>
+                    <span class="spacer"></span>
+                    <div class="billing">
+                        {{ billingConverter( drink.price ) }}
+                    </div>
+                    <button *ngIf="!putremoveCart( drink, 'beverage' )" class="submit" (click)="addtoCart( drink, 'beverage' )">
+                        <p>{{ 'order' | translate | titlecase }}
+                            <mat-icon>chevron_right</mat-icon>
+                        </p>
+                    </button>
+                    <button *ngIf="putremoveCart( drink, 'beverage' )" class="submit remove" (click)="removefromCart( drink, 'beverage' )">
+                        <p>{{ 'remove' | translate | titlecase }}
+                            <mat-icon>close</mat-icon>
+                        </p>
+                    </button>
+                </div>
+                <img [src]="'assets/images/menu/beverage/' + drink.name + '.svg'" [alt]="drink.name">
+                <img [src]="'assets/images/icon/filter/' + menuStatus( drink ) + '.svg'" class="status" [alt]="drink.status">
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Payment -->
+<div class="dialogSide" [style.transform]="drawerOpen ? 'translateX( 0 )' : 'translateX( 20rem )'">
+    <mat-card appearance="outlined">
+        <mat-card-header>
+            <mat-card-title>{{ 'myorder' | translate | titlecase }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div *ngFor="let cart of inCart; let last = last" class="incart">
+                <img [src]="'assets/images/menu/' + cart.type + '/' + cart.name + '.svg'" alt="">
+                <div class="detail">
+                    <label>{{ menuLabel( cart.name ) | translate | titlecase }}</label>
+                    <div class="billing">{{ billingConverter( cart.price, cart.count ) }}</div>
+                </div>
+                <div class="count">
+                    <div class="key">{{ cart.count  }}</div>
+                    @for ( key of [ 'keyboard_arrow_up', 'keyboard_arrow_down' ]; track key ) {
+                        <button class="key" (click)="changeCount( key, cart )">
+                            <mat-icon>{{ key }}</mat-icon>
+                        </button>
+                    }
+                </div>
+                <div #lastItem *ngIf="last"></div>
+            </div>
+        </mat-card-content>
+        <mat-card-footer>
+            <div class="action">
+                <button class="clear" (click)="inCart = []"><p>{{ 'clear' | translate | titlecase }}</p></button>
+            </div>
+            <mat-card class="billing" appearance="outlined">
+                <div class="billing-total">
+                    <p>{{ 'subtotal' | translate | titlecase }}</p>
+                    <p>{{ totalAmount() }}</p>
+                </div>
+                <div class="billing-total">
+                    <p>{{ 'servicecharge' | translate | titlecase }}</p>
+                    <p>{{ sst }} %</p>
+                </div>
+                <div class="billing-total final">
+                    <h3>{{ 'finaltotal' | translate | titlecase }}</h3>
+                    <h3>{{ finalAmount() }}</h3>
+                </div>
+            </mat-card>
+            <button (click)="submit()" [disabled]="!inCart.length">
+                <h5>{{ 'pay' | translate | titlecase }}</h5>
+            </button>
+        </mat-card-footer>
+    </mat-card>
+    <button class="toggle" (click)="drawer( 'toggle' )">
+        <mat-icon>{{ drawerOpen ? 'chevron_right' : 'chevron_left' }}</mat-icon>
+    </button>
+</div>
